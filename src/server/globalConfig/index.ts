@@ -33,6 +33,7 @@ export const getServerGlobalConfig = () => {
     ENABLED_MINIMAX,
     ENABLED_MISTRAL,
     ENABLED_QWEN,
+    ENABLED_STEPFUN,
 
     ENABLED_AZURE_OPENAI,
     AZURE_MODEL_LIST,
@@ -103,6 +104,8 @@ export const getServerGlobalConfig = () => {
       },
       perplexity: { enabled: ENABLED_PERPLEXITY },
       qwen: { enabled: ENABLED_QWEN },
+
+      stepfun: { enabled: ENABLED_STEPFUN },
 
       togetherai: {
         enabled: ENABLED_TOGETHERAI,
