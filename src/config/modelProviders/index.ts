@@ -5,6 +5,7 @@ import AnthropicProvider from './anthropic';
 import AzureProvider from './azure';
 import BaichuanProvider from './baichuan';
 import BedrockProvider from './bedrock';
+import CohereProvider from './cohere';
 import DeepSeekProvider from './deepseek';
 import GoogleProvider from './google';
 import GroqProvider from './groq';
@@ -27,6 +28,7 @@ export const LOBE_DEFAULT_MODEL_LIST: ChatModelCard[] = [
   QwenProvider.chatModels,
   ZhiPuProvider.chatModels,
   BedrockProvider.chatModels,
+  CohereProvider.chatModels,
   DeepSeekProvider.chatModels,
   GoogleProvider.chatModels,
   GroqProvider.chatModels,
@@ -51,6 +53,7 @@ export const DEFAULT_MODEL_PROVIDER_LIST = [
   QwenProvider,
   OllamaProvider,
   AnthropicProvider,
+  CohereProvider,
   DeepSeekProvider,
   GoogleProvider,
   OpenRouterProvider,
@@ -83,6 +86,7 @@ export { default as AnthropicProviderCard } from './anthropic';
 export { default as AzureProviderCard } from './azure';
 export { default as BaichuanProviderCard } from './baichuan';
 export { default as BedrockProviderCard } from './bedrock';
+export { default as CohereProviderCard } from './cohere';
 export { default as DeepSeekProviderCard } from './deepseek';
 export { default as GoogleProviderCard } from './google';
 export { default as GroqProviderCard } from './groq';
