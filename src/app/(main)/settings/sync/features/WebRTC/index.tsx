@@ -9,8 +9,9 @@ import { Flexbox } from 'react-layout-kit';
 
 import { useSyncSettings } from '@/app/(main)/settings/hooks/useSyncSettings';
 import { FORM_STYLE } from '@/const/layoutTokens';
-import SyncStatusInspector from '@/features/SyncStatusInspector';
+import SyncStatusTag from '@/features/SyncStatusInspector/Tag';
 import { useUserStore } from '@/store/user';
+import { SyncMethod } from '@/types/sync';
 
 import ChannelNameInput from './ChannelNameInput';
 
@@ -73,7 +74,7 @@ const WebRTC = memo(() => {
           e.stopPropagation();
         }}
       >
-        <SyncStatusInspector hiddenActions hiddenEnableGuide />
+        <SyncStatusTag hiddenActions hiddenEnableGuide method={SyncMethod.WebRTC} />
       </div>
     ),
     title: (

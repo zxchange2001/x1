@@ -25,7 +25,7 @@ const ttsSchema = z.object({
 });
 
 export const AgentSchema = z.object({
-  chatConfig: AgentChatConfigSchema,
+  chatConfig: AgentChatConfigSchema.optional(),
   fewShots: fewShotsSchema.optional(),
   model: z.string().default(DEFAULT_MODEL),
   params: z.object({

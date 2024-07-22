@@ -179,17 +179,17 @@ export const useProviderList = (): ProviderItem[] => {
       {
         ...BaichuanProviderCard,
         docUrl: urlJoin(BASE_DOC_URL, 'baichuan'),
-        title: <Baichuan.Combine size={ 20 } type={ 'color' } />,
+        title: <Baichuan.Combine size={20} type={'color'} />,
       },
       {
         ...TaichuProviderCard,
         docUrl: urlJoin(BASE_DOC_URL, 'taichu'),
-        title: <AiMass.Combine size={ 28 } type={ 'color' } />,
+        title: <AiMass.Combine size={28} type={'color'} />,
       },
       {
         ...Ai360ProviderCard,
         docUrl: urlJoin(BASE_DOC_URL, 'ai360'),
-        title: <Ai360.Combine size={ 20 } type={ 'color' } />,
+        title: <Ai360.Combine size={20} type={'color'} />,
       },
     ],
     [azureProvider, ollamaProvider, ollamaProvider, bedrockProvider],

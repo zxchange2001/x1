@@ -1,27 +1,23 @@
-import { TooltipPlacement } from 'antd/es/tooltip';
 import { memo } from 'react';
 
-import { useUserStore } from '@/store/user';
+import { featureFlagsSelectors, useServerConfigStore } from '@/store/serverConfig';
+import { SyncMethod } from '@/types/sync';
 
-import DisableSync from './DisableSync';
-import EnableSync from './EnableSync';
+import MultipleChannelTag from './MultipleTag';
+import SyncStatusTag from './Tag';
 
-interface SyncStatusTagProps {
-  hiddenActions?: boolean;
-  hiddenEnableGuide?: boolean;
-  placement?: TooltipPlacement;
-}
+const SyncStatusInspector = memo(() => {
+  const { enableWebrtc, enableLiveblocks } = useServerConfigStore(featureFlagsSelectors);
 
-const SyncStatusTag = memo<SyncStatusTagProps>(
-  ({ hiddenActions, placement, hiddenEnableGuide }) => {
-    const [enableSync] = useUserStore((s) => [s.syncEnabled]);
+  if (enableWebrtc && !enableLiveblocks) {
+    return <SyncStatusTag method={SyncMethod.WebRTC} />;
+  }
 
-    return enableSync ? (
-      <EnableSync hiddenActions={hiddenActions} placement={placement} />
-    ) : (
-      <DisableSync noPopover={hiddenEnableGuide} placement={placement} />
-    );
-  },
-);
+  if (enableLiveblocks && !enableWebrtc) {
+    return <SyncStatusTag hiddenName method={SyncMethod.Liveblocks} />;
+  }
 
-export default SyncStatusTag;
+  return <MultipleChannelTag />;
+});
+
+export default SyncStatusInspector;

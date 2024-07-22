@@ -238,7 +238,7 @@ class AgentRuntime {
 
       case ModelProvider.Ai360: {
         runtimeModel = new LobeAi360AI(params.ai360 ?? {});
-        break
+        break;
       }
     }
 

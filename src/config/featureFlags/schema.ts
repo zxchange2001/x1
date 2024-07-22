@@ -3,6 +3,7 @@ import { z } from 'zod';
 
 export const FeatureFlagsSchema = z.object({
   webrtc_sync: z.boolean().optional(),
+  liveblocks_sync: z.boolean().optional(),
 
   language_model_settings: z.boolean().optional(),
 
@@ -27,6 +28,7 @@ export type IFeatureFlags = z.infer<typeof FeatureFlagsSchema>;
 
 export const DEFAULT_FEATURE_FLAGS: IFeatureFlags = {
   webrtc_sync: false,
+  liveblocks_sync: false,
 
   language_model_settings: true,
 
@@ -49,6 +51,8 @@ export const DEFAULT_FEATURE_FLAGS: IFeatureFlags = {
 export const mapFeatureFlagsEnvToState = (config: IFeatureFlags) => {
   return {
     enableWebrtc: config.webrtc_sync,
+    enableLiveblocks: config.liveblocks_sync,
+
     isAgentEditable: config.edit_agent,
 
     showCreateSession: config.create_session,
@@ -58,6 +62,8 @@ export const mapFeatureFlagsEnvToState = (config: IFeatureFlags) => {
     showOpenAIProxyUrl: config.openai_proxy_url,
 
     showDalle: config.dalle,
+
+    showSyncSettings: config.webrtc_sync || config.liveblocks_sync,
 
     enableCheckUpdates: config.check_updates,
     showWelcomeSuggest: config.welcome_suggest,

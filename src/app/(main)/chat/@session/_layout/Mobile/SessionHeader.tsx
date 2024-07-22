@@ -17,7 +17,7 @@ import { mobileHeaderSticky } from '@/styles/mobileHeader';
 const Header = memo(() => {
   const [createSession] = useSessionStore((s) => [s.createSession]);
   const router = useRouter();
-  const { enableWebrtc, showCreateSession } = useServerConfigStore(featureFlagsSelectors);
+  const { showSyncSettings, showCreateSession } = useServerConfigStore(featureFlagsSelectors);
 
   return (
     <MobileNavBar
@@ -25,7 +25,7 @@ const Header = memo(() => {
         <Flexbox align={'center'} gap={8} horizontal style={{ marginLeft: 8 }}>
           <UserAvatar onClick={() => router.push('/me')} size={32} />
           <LobeChat type={'text'} />
-          {enableWebrtc && <SyncStatusInspector placement={'bottom'} />}
+          {showSyncSettings && <SyncStatusInspector />}
         </Flexbox>
       }
       right={
