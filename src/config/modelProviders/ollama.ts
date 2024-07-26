@@ -4,15 +4,23 @@ import { ModelProviderCard } from '@/types/llm';
 const Ollama: ModelProviderCard = {
   chatModels: [
     {
-      displayName: 'Llama3 8B',
+      displayName: 'Llama3.1 8B',
       enabled: true,
-      id: 'llama3',
-      tokens: 8000, // https://huggingface.co/blog/zh/llama3#llama-3-的新进展
+      functionCall: true,
+      id: 'llama3.1',
+      tokens: 128_000,
     },
     {
-      displayName: 'Llama3 70B',
-      id: 'llama3:70b',
-      tokens: 8000,
+      displayName: 'Llama3.1 70B',
+      functionCall: true,
+      id: 'llama3.1:70b',
+      tokens: 128_000,
+    },
+    {
+      displayName: 'Llama3.1 405B',
+      functionCall: true,
+      id: 'llama3.1:405b',
+      tokens: 128_000,
     },
     {
       displayName: 'Phi-3 3.8B',
@@ -25,11 +33,11 @@ const Ollama: ModelProviderCard = {
       id: 'phi3:14b',
       tokens: 128_000,
     },
+    // https://cohere.com/research/papers/aya-command-23-8b-and-35b-technical-report-2024-05-23
     {
       displayName: 'Aya 23 8B',
-      enabled: true,
       id: 'aya',
-      tokens: 8192, // https://cohere.com/research/papers/aya-command-23-8b-and-35b-technical-report-2024-05-23
+      tokens: 8192,
     },
     {
       displayName: 'Aya 23 35B',
