@@ -23,6 +23,7 @@ export const getServerGlobalConfig = () => {
     ENABLED_OPENAI,
     OPENAI_MODEL_LIST,
 
+    ENABLED_GENERIC_OPENAI,
     ENABLED_MOONSHOT,
     ENABLED_ZHIPU,
     ENABLED_AWS_BEDROCK,
@@ -80,6 +81,7 @@ export const getServerGlobalConfig = () => {
       baichuan: { enabled: ENABLED_BAICHUAN },
       bedrock: { enabled: ENABLED_AWS_BEDROCK },
       deepseek: { enabled: ENABLED_DEEPSEEK },
+      genericopenai: { enabled: ENABLED_GENERIC_OPENAI },
       google: { enabled: ENABLED_GOOGLE },
       groq: { enabled: ENABLED_GROQ },
       minimax: { enabled: ENABLED_MINIMAX },
@@ -94,6 +96,7 @@ export const getServerGlobalConfig = () => {
           modelString: OLLAMA_MODEL_LIST,
         }),
       },
+
       openai: {
         enabled: ENABLED_OPENAI,
         enabledModels: extractEnabledModels(OPENAI_MODEL_LIST),
@@ -102,7 +105,6 @@ export const getServerGlobalConfig = () => {
           modelString: OPENAI_MODEL_LIST,
         }),
       },
-
       openrouter: {
         enabled: ENABLED_OPENROUTER,
         enabledModels: extractEnabledModels(OPENROUTER_MODEL_LIST),
