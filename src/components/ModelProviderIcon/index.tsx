@@ -6,6 +6,7 @@ import {
   Baichuan,
   Bedrock,
   DeepSeek,
+  Doubao,
   Google,
   Groq,
   LobeHub,
@@ -137,6 +138,10 @@ const ModelProviderIcon = memo<ModelProviderIconProps>(({ provider }) => {
 
     case ModelProvider.SiliconCloud: {
       return <SiliconCloud size={20} />;
+    }
+
+    case ModelProvider.Doubao: {
+      return <Doubao.Color size={20} />;
     }
 
     default: {

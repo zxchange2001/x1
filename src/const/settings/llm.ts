@@ -50,6 +50,9 @@ export const DEFAULT_LLM_CONFIG: UserModelProviderConfig = {
     enabled: false,
     enabledModels: filterEnabledModels(DeepSeekProviderCard),
   },
+  doubao: {
+    enabled: false,
+  },
   google: {
     enabled: false,
     enabledModels: filterEnabledModels(GoogleProviderCard),
