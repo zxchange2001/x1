@@ -73,6 +73,7 @@ export const getLLMConfig = () => {
 
       ENABLED_QWEN: z.boolean(),
       QWEN_API_KEY: z.string().optional(),
+      QWEN_ENDPOINT: z.string().optional(),
 
       ENABLED_STEPFUN: z.boolean(),
       STEPFUN_API_KEY: z.string().optional(),
@@ -166,6 +167,7 @@ export const getLLMConfig = () => {
 
       ENABLED_QWEN: !!process.env.QWEN_API_KEY,
       QWEN_API_KEY: process.env.QWEN_API_KEY,
+      QWEN_ENDPOINT: process.env.QWEN_ENDPOINT,
 
       ENABLED_STEPFUN: !!process.env.STEPFUN_API_KEY,
       STEPFUN_API_KEY: process.env.STEPFUN_API_KEY,
