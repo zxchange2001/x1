@@ -4,16 +4,19 @@ import { Loader2 } from 'lucide-react';
 import { memo } from 'react';
 import { Center, Flexbox } from 'react-layout-kit';
 
-const FullscreenLoading = memo<{ title?: string; title2?: string }>(({ title, title2 }) => {
+const FullscreenLoading = memo<{ title?: string }>(({ title }) => {
   return (
     <Flexbox height={'100%'} style={{ userSelect: 'none' }} width={'100%'}>
       <Center flex={1} gap={12} width={'100%'}>
         <LobeChat size={48} type={'combine'} />
-        <Center gap={16} horizontal>
-          <Icon icon={Loader2} spin />
+        <Center
+          gap={16}
+          horizontal
+          style={{ fontSize: '16px', lineHeight: '1.5', marginTop: '2%' }}
+        >
+          <Icon icon={Loader2} spin style={{ fontSize: '16px' }} />
           {title}
         </Center>
-        {title2 && <span style={{ fontWeight: 'lighter' }}>{title2}</span>}
       </Center>
     </Flexbox>
   );

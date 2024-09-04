@@ -13,7 +13,6 @@
   "autoGenerate": "自動生成",
   "autoGenerateTooltip": "ヒントに基づいてエージェントの説明を自動生成します",
   "autoGenerateTooltipDisabled": "ツールチップを入力してから自動生成機能を使用してください",
-  "await": "しばらくお待ちください...",
   "back": "戻る",
   "batchDelete": "バッチ削除",
   "blog": "製品ブログ",
