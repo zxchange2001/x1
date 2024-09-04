@@ -9,10 +9,11 @@
       "title": "Bienvenue à {{name}}"
     }
   },
-  "appInitializing": "L'application est en cours de démarrage, veuillez patienter...",
+  "appInitializing": "Initialisation de l'application en cours",
   "autoGenerate": "Générer automatiquement",
   "autoGenerateTooltip": "Générer automatiquement la description de l'agent basée sur les suggestions",
   "autoGenerateTooltipDisabled": "Veuillez saisir un mot-clé avant d'activer la fonction de complétion automatique",
+  "await": "Veuillez patienter...",
   "back": "Retour",
   "batchDelete": "Suppression en masse",
   "blog": "Blog des produits",
