@@ -56,6 +56,10 @@ const FileItem = memo<FileItemProps>(({ alt, onRemove, src, loading }) => {
             e.stopPropagation();
             onRemove?.();
           }}
+          style={{
+            blockSize: '28px',
+            fontSize: '20px',
+          }}
         />
       }
       alt={alt || ''}
