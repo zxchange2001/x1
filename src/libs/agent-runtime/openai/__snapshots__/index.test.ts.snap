@@ -10,17 +10,10 @@ exports[`LobeOpenAI > models > should get models 1`] = `
     "tokens": 16385,
   },
   {
-    "description": "Currently points to gpt-3.5-turbo-16k-0613",
-    "displayName": "GPT-3.5 Turbo 16K",
     "id": "gpt-3.5-turbo-16k",
-    "legacy": true,
-    "tokens": 16385,
   },
   {
-    "description": "Currently points to gpt-3.5-turbo-16k-0613",
     "id": "gpt-3.5-turbo-16k-0613",
-    "legacy": true,
-    "tokens": 16385,
   },
   {
     "displayName": "GPT-4 Turbo Vision Preview (1106)",
@@ -53,10 +46,7 @@ exports[`LobeOpenAI > models > should get models 1`] = `
     "id": "gpt-3.5-turbo-0301",
   },
   {
-    "displayName": "GPT-3.5 Turbo (0613)",
     "id": "gpt-3.5-turbo-0613",
-    "legacy": true,
-    "tokens": 4096,
   },
   {
     "displayName": "GPT-3.5 Turbo (1106)",

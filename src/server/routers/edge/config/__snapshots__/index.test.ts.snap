@@ -48,14 +48,6 @@ exports[`configRouter > getGlobalConfig > Model Provider env > OPENAI_MODEL_LIST
     "tokens": 16385,
   },
   {
-    "description": "Currently points to gpt-3.5-turbo-16k-0613",
-    "displayName": "GPT-3.5 Turbo 16K",
-    "enabled": true,
-    "id": "gpt-3.5-turbo-16k",
-    "legacy": true,
-    "tokens": 16385,
-  },
-  {
     "description": "Currently points to gpt-4-0613",
     "displayName": "GPT-4",
     "enabled": true,
