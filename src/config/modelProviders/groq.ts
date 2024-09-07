@@ -19,7 +19,7 @@ const Groq: ModelProviderCard = {
       id: 'llama-3.1-70b-versatile',
       tokens: 8000,
     },
-/*
+    /*
     // Offline due to overwhelming demand! Stay tuned for updates.
     {
       displayName: 'Llama 3.1 405B (Preview)',
