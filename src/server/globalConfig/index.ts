@@ -4,6 +4,7 @@ import { fileEnv } from '@/config/file';
 import { langfuseEnv } from '@/config/langfuse';
 import { getLLMConfig } from '@/config/llm';
 import {
+  BedrockProviderCard,
   GroqProviderCard,
   NovitaProviderCard,
   OllamaProviderCard,
@@ -34,6 +35,8 @@ export const getServerGlobalConfig = () => {
     ZHIPU_MODEL_LIST,
 
     ENABLED_AWS_BEDROCK,
+    AWS_BEDROCK_MODEL_LIST,
+
     ENABLED_GOOGLE,
 
     ENABLED_GROQ,
@@ -60,7 +63,7 @@ export const getServerGlobalConfig = () => {
     SILICONCLOUD_MODEL_LIST,
 
     ENABLED_UPSTAGE,
-    
+
     ENABLED_AZURE_OPENAI,
     AZURE_MODEL_LIST,
 
@@ -100,7 +103,14 @@ export const getServerGlobalConfig = () => {
         }),
       },
       baichuan: { enabled: ENABLED_BAICHUAN },
-      bedrock: { enabled: ENABLED_AWS_BEDROCK },
+      bedrock: {
+        enabled: ENABLED_AWS_BEDROCK,
+        enabledModels: extractEnabledModels(AWS_BEDROCK_MODEL_LIST),
+        serverModelCards: transformToChatModelCards({
+          defaultChatModels: BedrockProviderCard.chatModels,
+          modelString: AWS_BEDROCK_MODEL_LIST,
+        }),
+      },
       deepseek: { enabled: ENABLED_DEEPSEEK },
       google: { enabled: ENABLED_GOOGLE },
       groq: {
@@ -184,12 +194,12 @@ export const getServerGlobalConfig = () => {
           modelString: ZEROONE_MODEL_LIST,
         }),
       },
-      zhipu: { 
-        enabled: ENABLED_ZHIPU, 
-        enabledModels: extractEnabledModels(ZHIPU_MODEL_LIST), 
-        serverModelCards: transformToChatModelCards({ 
-          defaultChatModels: ZhiPuProviderCard.chatModels, 
-          modelString: ZHIPU_MODEL_LIST 
+      zhipu: {
+        enabled: ENABLED_ZHIPU,
+        enabledModels: extractEnabledModels(ZHIPU_MODEL_LIST),
+        serverModelCards: transformToChatModelCards({
+          defaultChatModels: ZhiPuProviderCard.chatModels,
+          modelString: ZHIPU_MODEL_LIST,
         }),
       },
     },
