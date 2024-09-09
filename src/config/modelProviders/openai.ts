@@ -140,25 +140,6 @@ const OpenAI: ModelProviderCard = {
       id: 'gpt-3.5-turbo-instruct',
       tokens: 4096,
     },
-    {
-      description: 'Currently points to gpt-3.5-turbo-16k-0613', // Will be discontinued on September 13, 2024
-      displayName: 'GPT-3.5 Turbo 16K',
-      id: 'gpt-3.5-turbo-16k',
-      legacy: true,
-      tokens: 16_385,
-    },
-    {
-      displayName: 'GPT-3.5 Turbo (0613)', // Will be discontinued on September 13, 2024
-      id: 'gpt-3.5-turbo-0613',
-      legacy: true,
-      tokens: 4096,
-    },
-    {
-      description: 'Currently points to gpt-3.5-turbo-16k-0613', // Will be discontinued on September 13, 2024
-      id: 'gpt-3.5-turbo-16k-0613',
-      legacy: true,
-      tokens: 16_385,
-    },
   ],
   checkModel: 'gpt-4o-mini',
   enabled: true,
