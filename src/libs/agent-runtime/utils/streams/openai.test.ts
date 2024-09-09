@@ -302,4 +302,154 @@ describe('OpenAIStream', () => {
       ].map((i) => `${i}\n`),
     );
   });
+
+  it('should handle OpenRouter tool calls', async () => {
+    const dataList = [
+      {
+        id: 'gen-Bx4R8TCbr4GElWZJtE30XGDQyoYW',
+        model: 'anthropic/claude-3.5-sonnet',
+        object: 'chat.completion.chunk',
+        created: 1725817213,
+        choices: [
+          {
+            index: 0,
+            delta: {
+              role: 'assistant',
+              content:
+                '为了回答您关于杭州天气的问题，我需要使用实时天气查询工具来获取最新的天气信息。让我为您查询一下。',
+            },
+            finish_reason: null,
+            logprobs: null,
+          },
+        ],
+      },
+      {
+        id: 'gen-Bx4R8TCbr4GElWZJtE30XGDQyoYW',
+        model: 'anthropic/claude-3.5-sonnet',
+        object: 'chat.completion.chunk',
+        created: 1725817213,
+        choices: [
+          {
+            delta: {
+              role: 'assistant',
+              content: null,
+              tool_calls: [
+                {
+                  id: 'toolu_01M368ZnDFfJwaiVGL4evqhn',
+                  index: 1,
+                  type: 'function',
+                  function: { name: 'realtime-weather____fetchCurrentWeather', arguments: '' },
+                },
+              ],
+            },
+            index: 0,
+          },
+        ],
+      },
+      {
+        id: 'gen-Bx4R8TCbr4GElWZJtE30XGDQyoYW',
+        model: 'anthropic/claude-3.5-sonnet',
+        object: 'chat.completion.chunk',
+        created: 1725817213,
+        choices: [
+          {
+            delta: {
+              role: 'assistant',
+              content: null,
+              tool_calls: [{ index: 1, type: 'function', function: { arguments: '{"city"' } }],
+            },
+            index: 0,
+          },
+        ],
+      },
+      {
+        id: 'gen-Bx4R8TCbr4GElWZJtE30XGDQyoYW',
+        model: 'anthropic/claude-3.5-sonnet',
+        object: 'chat.completion.chunk',
+        created: 1725817213,
+        choices: [
+          {
+            delta: {
+              role: 'assistant',
+              content: null,
+              tool_calls: [{ index: 1, type: 'function', function: { arguments: ':"杭州"}' } }],
+            },
+            index: 0,
+          },
+        ],
+      },
+      {
+        id: 'gen-Bx4R8TCbr4GElWZJtE30XGDQyoYW',
+        model: 'anthropic/claude-3.5-sonnet',
+        object: 'chat.completion.chunk',
+        created: 1725817213,
+        choices: [
+          { index: 0, delta: { role: 'assistant', content: '' }, finish_reason: 'tool_calls' },
+        ],
+      },
+      {
+        id: 'gen-Bx4R8TCbr4GElWZJtE30XGDQyoYW',
+        model: 'anthropic/claude-3.5-sonnet',
+        object: 'chat.completion.chunk',
+        created: 1725817213,
+        choices: [
+          {
+            index: 0,
+            delta: { role: 'assistant', content: '' },
+            finish_reason: null,
+            logprobs: null,
+          },
+        ],
+        usage: { prompt_tokens: 474, completion_tokens: 114, total_tokens: 588 },
+      },
+    ];
+    const mockOpenAIStream = new ReadableStream({
+      start(controller) {
+        dataList.forEach((data) => {
+          controller.enqueue(data);
+        });
+
+        controller.close();
+      },
+    });
+
+    const onToolCallMock = vi.fn();
+
+    const protocolStream = OpenAIStream(mockOpenAIStream, {
+      onToolCall: onToolCallMock,
+    });
+
+    const decoder = new TextDecoder();
+    const chunks = [];
+
+    // @ts-ignore
+    for await (const chunk of protocolStream) {
+      chunks.push(decoder.decode(chunk, { stream: true }));
+    }
+
+    expect(chunks).toEqual(
+      [
+        'id: gen-Bx4R8TCbr4GElWZJtE30XGDQyoYW',
+        'event: text',
+        `data: "为了回答您关于杭州天气的问题，我需要使用实时天气查询工具来获取最新的天气信息。让我为您查询一下。"\n`,
+        'id: gen-Bx4R8TCbr4GElWZJtE30XGDQyoYW',
+        'event: tool_calls',
+        `data: [{"function":{"name":"realtime-weather____fetchCurrentWeather","arguments":""},"id":"toolu_01M368ZnDFfJwaiVGL4evqhn","index":1,"type":"function"}]\n`,
+        'id: gen-Bx4R8TCbr4GElWZJtE30XGDQyoYW',
+        'event: tool_calls',
+        `data: [{"function":{"arguments":"{\\"city\\""},"id":"toolu_01M368ZnDFfJwaiVGL4evqhn","index":1,"type":"function"}]\n`,
+        'id: gen-Bx4R8TCbr4GElWZJtE30XGDQyoYW',
+        'event: tool_calls',
+        `data: [{"function":{"arguments":":\\"杭州\\"}"},"id":"toolu_01M368ZnDFfJwaiVGL4evqhn","index":1,"type":"function"}]\n`,
+        'id: gen-Bx4R8TCbr4GElWZJtE30XGDQyoYW',
+        'event: stop',
+        `data: "tool_calls"\n`,
+        'id: gen-Bx4R8TCbr4GElWZJtE30XGDQyoYW',
+        'event: text',
+        `data: ""\n`,
+      ].map((i) => `${i}\n`),
+    );
+
+    expect(onToolCallMock).toHaveBeenCalledTimes(3);
+  });
 });
